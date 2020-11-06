@@ -1,0 +1,30 @@
+<table border="1">
+	<thead>
+		<tr>
+			<th>Nom</th>
+			<th>Description</th>
+			<th>Prix</th>
+			<th>Catégorie</th>
+			<th>Slug</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for produit in produits %}
+		<tr>
+			<td>
+				<a href="{{path('show_produit', {'slug': produit.slug})}}">
+					{{produit.nom}}
+				</a>
+			</td>
+			<td>{{produit.description}}</td>
+			<td>{{produit.prix}}</td>
+			<td>{{produit.categorie.nom}}</td>
+			<td>{{produit.slug}}</td>
+		</tr>
+	{% else %}
+		<tr>
+			<td colspan="5">Il n'y a aucun produit</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>

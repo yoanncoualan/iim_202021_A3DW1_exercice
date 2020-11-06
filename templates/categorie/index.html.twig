@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategorieController!{% endblock %}
+
+{% block body %}
+<h1>Catégories</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Slug</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for categorie in categories %}
+        <tr>
+            <td>
+                <a href="{{path('show_categorie', {'slug': categorie.slug})}}">
+                    {{categorie.nom}}
+                </a>
+            </td>
+            <td>{{categorie.slug}}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="2">Il n'y a pas de catégories</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% if is_granted('ROLE_USER') %}
+    <h2>Ajouter une catégorie</h2>
+    {{form(ajout)}}
+{% endif %}
+{% endblock %}

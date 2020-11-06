@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProduitController!{% endblock %}
+
+{% block body %}
+<h1>Produits</h1>
+
+{% include 'produit/liste.html.twig' with {'produits': produits} %}
+
+{% if is_granted('ROLE_USER') %}
+    <h2>Ajouter un produit</h2>
+    {{form(ajout)}}
+{% endif %}
+{% endblock %}
